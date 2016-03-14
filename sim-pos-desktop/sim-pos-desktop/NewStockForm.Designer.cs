@@ -1,6 +1,6 @@
 ﻿namespace sim_pos_desktop
 {
-    partial class Form1
+    partial class NewStockForm
     {
         /// <summary>
         /// Required designer variable.
