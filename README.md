@@ -1,2 +1,2 @@
-# ProjectAGF-FrontEnd-StockReceive
-Front end for StockReceive . Written in C#
+# sim-pos-desktop
+Frontend for POS application, written in c#
