@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace sim_pos_desktop
 {
-    public partial class Form1 : Form
+    public partial class POSForm : Form
     {
-        public Form1()
+        public POSForm()
         {
             InitializeComponent();
         }
