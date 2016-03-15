@@ -15,7 +15,7 @@ namespace sim_pos_desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NewStockForm());
+            Application.Run(new LoginForm());
         }
     }
 }
