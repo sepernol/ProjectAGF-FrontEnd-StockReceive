@@ -58,7 +58,7 @@ namespace sim_pos_desktop
             }
             else
             {
-                MessageBox.Show("Username dan password tidak cocok", "Maaf", MessageBoxButtons.OK, MessageBoxIcon.None);
+                MessageBox.Show("Username dan password tidak cocok", "Maaf");
                 PasswordTextBox.Text = "";
                 UsernameTextBox.Text = "";
                 UsernameTextBox.Select();
