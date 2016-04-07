@@ -14,7 +14,8 @@ namespace sim_pos_desktop
 {
     public partial class LoginForm : Form
     {
-        m_users user;
+        private m_users user;
+        private string home_url = "http://sim-pos-mock.zerobit.id";
         public LoginForm()
         {
             InitializeComponent();
@@ -27,7 +28,8 @@ namespace sim_pos_desktop
             user = new m_users();
             try
             {
-                WebRequest request = WebRequest.Create(string.Format("http://apotik/user/{0},{1}", user, pass)) as HttpWebRequest; ;
+                string endpoint = home_url + "/users/" + username + "/" + pass;
+                WebRequest request = WebRequest.Create(endpoint) as HttpWebRequest; ;
                 WebResponse response = request.GetResponse();
 
                 using (var reader = new StreamReader(response.GetResponseStream()))
@@ -49,12 +51,13 @@ namespace sim_pos_desktop
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string user = UsernameTextBox.Text;
-            string pass = UsernameTextBox.Text;
+            string username = UsernameTextBox.Text;
+            string password = PasswordTextBox.Text;
 
-            if (login(user, pass))
+            if (login(username, password))
             {
-                Show(new NewStockForm());
+                NewStockForm newStockForm = new NewStockForm(user);
+                newStockForm.Show();
             }
             else
             {

@@ -37,6 +37,12 @@
             this.UserLabel = new System.Windows.Forms.Label();
             this.UserTextBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ProductNameColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BatchNumberColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiredDateColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitBuyPriceColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitOfMeasurementColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductNameLabel = new System.Windows.Forms.Label();
             this.BatchNumberLabel = new System.Windows.Forms.Label();
             this.ExpiredDateLabel = new System.Windows.Forms.Label();
@@ -49,12 +55,6 @@
             this.QuantityTextBox = new System.Windows.Forms.TextBox();
             this.UnitOfMeasurementTextBox = new System.Windows.Forms.TextBox();
             this.ExpiredDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.ProductNameColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BatchNumberColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiredDateColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitBuyPriceColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitOfMeasurementColumnDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddTableButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -113,6 +113,8 @@
             this.SupplierNameTextBox.Name = "SupplierNameTextBox";
             this.SupplierNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.SupplierNameTextBox.TabIndex = 5;
+            this.SupplierNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SupplierNameTextBox_KeyDown);
+            this.SupplierNameTextBox.Leave += new System.EventHandler(this.SupplierNameTextBox_Leave);
             // 
             // UserLabel
             // 
@@ -149,6 +151,36 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(311, 122);
             this.dataGridView1.TabIndex = 8;
+            // 
+            // ProductNameColumnDGV
+            // 
+            this.ProductNameColumnDGV.HeaderText = "Nama Produk";
+            this.ProductNameColumnDGV.Name = "ProductNameColumnDGV";
+            // 
+            // BatchNumberColumnDGV
+            // 
+            this.BatchNumberColumnDGV.HeaderText = "Nomor Batch";
+            this.BatchNumberColumnDGV.Name = "BatchNumberColumnDGV";
+            // 
+            // ExpiredDateColumnDGV
+            // 
+            this.ExpiredDateColumnDGV.HeaderText = "Tanggal Kadaluarsa";
+            this.ExpiredDateColumnDGV.Name = "ExpiredDateColumnDGV";
+            // 
+            // UnitBuyPriceColumnDGV
+            // 
+            this.UnitBuyPriceColumnDGV.HeaderText = "Harga Beli";
+            this.UnitBuyPriceColumnDGV.Name = "UnitBuyPriceColumnDGV";
+            // 
+            // QuantityColumnDGV
+            // 
+            this.QuantityColumnDGV.HeaderText = "Jumlah";
+            this.QuantityColumnDGV.Name = "QuantityColumnDGV";
+            // 
+            // UnitOfMeasurementColumnDGV
+            // 
+            this.UnitOfMeasurementColumnDGV.HeaderText = "Satuan Pengukuran";
+            this.UnitOfMeasurementColumnDGV.Name = "UnitOfMeasurementColumnDGV";
             // 
             // ProductNameLabel
             // 
@@ -212,6 +244,8 @@
             this.ProductNameTextBox.Name = "ProductNameTextBox";
             this.ProductNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.ProductNameTextBox.TabIndex = 15;
+            this.ProductNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProductNameTextBox_KeyDown);
+            this.ProductNameTextBox.Leave += new System.EventHandler(this.ProductNameTextBox_Leave);
             // 
             // BatchNumberTextBox
             // 
@@ -258,36 +292,6 @@
             this.ExpiredDateDateTimePicker.Size = new System.Drawing.Size(100, 20);
             this.ExpiredDateDateTimePicker.TabIndex = 20;
             // 
-            // ProductNameColumnDGV
-            // 
-            this.ProductNameColumnDGV.HeaderText = "Nama Produk";
-            this.ProductNameColumnDGV.Name = "ProductNameColumnDGV";
-            // 
-            // BatchNumberColumnDGV
-            // 
-            this.BatchNumberColumnDGV.HeaderText = "Nomor Batch";
-            this.BatchNumberColumnDGV.Name = "BatchNumberColumnDGV";
-            // 
-            // ExpiredDateColumnDGV
-            // 
-            this.ExpiredDateColumnDGV.HeaderText = "Tanggal Kadaluarsa";
-            this.ExpiredDateColumnDGV.Name = "ExpiredDateColumnDGV";
-            // 
-            // UnitBuyPriceColumnDGV
-            // 
-            this.UnitBuyPriceColumnDGV.HeaderText = "Harga Beli";
-            this.UnitBuyPriceColumnDGV.Name = "UnitBuyPriceColumnDGV";
-            // 
-            // QuantityColumnDGV
-            // 
-            this.QuantityColumnDGV.HeaderText = "Jumlah";
-            this.QuantityColumnDGV.Name = "QuantityColumnDGV";
-            // 
-            // UnitOfMeasurementColumnDGV
-            // 
-            this.UnitOfMeasurementColumnDGV.HeaderText = "Satuan Pengukuran";
-            this.UnitOfMeasurementColumnDGV.Name = "UnitOfMeasurementColumnDGV";
-            // 
             // AddTableButton
             // 
             this.AddTableButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -297,6 +301,7 @@
             this.AddTableButton.TabIndex = 21;
             this.AddTableButton.Text = "Tambah";
             this.AddTableButton.UseVisualStyleBackColor = true;
+            this.AddTableButton.Click += new System.EventHandler(this.AddTableButton_Click);
             // 
             // button1
             // 
