@@ -53,7 +53,7 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="m_users.cs" />
+    <Compile Include="Master.cs" />
     <Compile Include="NewStockForm.cs">
       <SubType>Form</SubType>
     </Compile>
