@@ -5,7 +5,7 @@ using System.Text;
 
 namespace sim_pos_desktop
 {
-    public class m_users
+    public class Users
     {
         private int _id;
         private string _user_name;
@@ -34,7 +34,52 @@ namespace sim_pos_desktop
         }
     }
 
-    public class m_suppliers
+    public class User_roles
+    {
+        private int _id, _user_id, _role_id;
+
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public int user_id
+        {
+            get { return _user_id; }
+            set { _user_id = value; }
+        }
+        public int role_id
+        {
+            get { return _role_id; }
+            set { _role_id = value; }
+        }
+    }
+
+    public class Roles
+    {
+        private int _id;
+        private string _code, _description;
+
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public string code
+        {
+            get { return _code; }
+            set { _code = value; }
+        }
+        public string description
+        {
+            get { return _description; }
+            set { _description = value; }
+        }
+    }
+
+
+    public class Supplier
     {
         private int _id;
         private string _code, _name;
@@ -64,7 +109,7 @@ namespace sim_pos_desktop
 
 
 
-    public class m_product
+    public class Product
     {
         private int _id, _category_id;
         private string _sku, _name, _short_name;
@@ -94,9 +139,37 @@ namespace sim_pos_desktop
             get { return _category_id; }
             set { _category_id = value; }
         }
+
     }
 
-    public class m_product_uom
+    public class Product_Category
+    {
+        private int _id;
+        private string _nama, _code, _description;
+
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public string nama
+        {
+            get { return _nama; }
+            set { _nama = value; }
+        }
+        public string code
+        {
+            get { return _code; }
+            set { _code = value; }
+        }
+        public string description
+        {
+            get { return _description; }
+            set { _description = value; }
+        }
+    }
+
+    public class Product_UOM
     {
         private int _product_id, _uom_id;
 
@@ -112,7 +185,7 @@ namespace sim_pos_desktop
         }
     }
 
-    public class m_uoms
+    public class UOM
     {
         private int _id;
         private string _code, _description;
@@ -132,5 +205,67 @@ namespace sim_pos_desktop
             get { return _description; }
             set { _description = value; }
         }
+    }
+
+    public class UOM_Conversions
+    {
+        private int _id, _product_id, _uom_source_id, _uom_des_id;
+        private decimal _conversion_value;
+
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public int product_id
+        {
+            get { return _product_id; }
+            set { _product_id = value; }
+        }
+        public int uom_source_id
+        {
+            get { return _uom_source_id; }
+            set { _uom_source_id = value; }
+        }
+        public int uom_dest_id
+        {
+            get { return _uom_des_id; }
+            set { _uom_des_id = value; }
+        }
+
+        public decimal conversion_value
+        {
+            get { return _conversion_value; }
+            set { _conversion_value = value; }
+        }
+    }
+
+    public class Unit_Price
+    {
+        private int _id, _product_id, _uom_id;
+        private decimal _unit_price;
+
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public int product_id
+        {
+            get { return _product_id; }
+            set { _product_id = value; }
+        }
+
+        public int uom_id
+        {
+            get { return _uom_id; }
+            set { _uom_id = value; }
+        }
+        public decimal unit_price
+        {
+            get { return _unit_price; }
+            set { _unit_price = value; }
+        }
+
     }
 }
