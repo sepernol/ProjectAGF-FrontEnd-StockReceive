@@ -14,7 +14,7 @@ namespace sim_pos_desktop
 {
     public partial class LoginForm : Form
     {
-        private m_users user;
+        private Users user;
         private string home_url = "http://sim-pos-mock.zerobit.id";
         public LoginForm()
         {
@@ -25,7 +25,7 @@ namespace sim_pos_desktop
         private bool login(string username, string pass)
         {
             bool login_success = false;
-            user = new m_users();
+            user = new Users();
             try
             {
                 string endpoint = home_url + "/users/" + username + "/" + pass;
@@ -35,7 +35,7 @@ namespace sim_pos_desktop
                 using (var reader = new StreamReader(response.GetResponseStream()))
                 {
                     string responseContent = reader.ReadToEnd();
-                    user = JsonConvert.DeserializeObject<m_users>(responseContent);
+                    user = JsonConvert.DeserializeObject<Users>(responseContent);
                     if (user.user_name != null && user.password != null)
                     {
                         login_success = true;

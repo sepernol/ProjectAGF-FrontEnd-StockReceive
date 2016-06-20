@@ -14,17 +14,17 @@ namespace sim_pos_desktop
 {
     public partial class NewStockForm : Form
     {
-        private List<m_suppliers> allSupplier = new List<m_suppliers>();
+        Handlers handlers = new Handlers();
+        private List<Supplier> allSupplier = new List<Supplier>();
         private AutoCompleteStringCollection nameSupplier = new AutoCompleteStringCollection();
 
-        private List<m_product> allProduct = new List<m_product>();
+        private List<Product> allProduct = new List<Product>();
         private AutoCompleteStringCollection nameProduct = new AutoCompleteStringCollection();
 
-        private m_users user = new m_users();
+        private Users user = new Users();
 
-        private string home_url = "http://sim-pos-mock.zerobit.id";
 
-        public NewStockForm(m_users user)
+        public NewStockForm(Users user)
         {
             InitializeComponent();
             this.user = user;
@@ -63,7 +63,7 @@ namespace sim_pos_desktop
             if (nameProduct.Contains(ProductNameTextBox.Text))
             {
                 int index = nameProduct.IndexOf(ProductNameTextBox.Text);
-                m_product product = allProduct[index];
+                Product product = allProduct[index];
                 UnitOfMeasurementTextBox.Text = getUomDes(getUomID(product.id));
             }
             else
@@ -85,15 +85,7 @@ namespace sim_pos_desktop
         {
             try
             {
-                string endpoint = home_url + "/suppliers";
-                WebRequest request = WebRequest.Create(endpoint) as HttpWebRequest; ;
-                WebResponse response = request.GetResponse();
-
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    string responseContent = reader.ReadToEnd();
-                    allSupplier = JsonConvert.DeserializeObject<List<m_suppliers>>(responseContent);
-                }
+                allSupplier = handlers.getSuppliers(1, 1);
 
                 for (int x = 0; x < allSupplier.Count; x++)
                 {
@@ -115,16 +107,7 @@ namespace sim_pos_desktop
         {
             try
             {
-                string endpoint = home_url + "/products";
-                WebRequest request = WebRequest.Create(endpoint) as HttpWebRequest; ;
-                WebResponse response = request.GetResponse();
-
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    string responseContent = reader.ReadToEnd();
-                    allProduct = JsonConvert.DeserializeObject<List<m_product>>(responseContent);
-                }
-
+                allProduct = handlers.getProducts(1, 1);
                 for (int x = 0; x < allProduct.Count; x++)
                 {
                     nameProduct.Add(allProduct[x].name);
@@ -143,19 +126,11 @@ namespace sim_pos_desktop
         private string getUomDes(int idUom)
         {
             string uomDes = "";
-            m_uoms uom = new m_uoms();
+            UOM uom = new UOM();
             try
             {
-                string endpoint = home_url + "/uoms/" + idUom;
-                WebRequest request = WebRequest.Create(endpoint) as HttpWebRequest; ;
-                WebResponse response = request.GetResponse();
-
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    string responseContent = reader.ReadToEnd();
-                    uom = JsonConvert.DeserializeObject<m_uoms>(responseContent);
-                    uomDes = uom.description;
-                }
+                uom = handlers.getUOMByID(idUom);
+                uomDes = uom.description;
             }
             catch (Exception e)
             {
@@ -167,19 +142,11 @@ namespace sim_pos_desktop
         private int getUomID(int idProduct)
         {
             int uomid = 0;
-            m_product_uom uomProduct = new m_product_uom();
+            Product_UOM uomProduct = new Product_UOM();
             try
             {
-                string endpoint = home_url + "/products/" + idProduct + "/uoms";
-                WebRequest request = WebRequest.Create(endpoint) as HttpWebRequest; ;
-                WebResponse response = request.GetResponse();
-
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    string responseContent = reader.ReadToEnd();
-                    uomProduct = JsonConvert.DeserializeObject<m_product_uom>(responseContent);
-                    uomid = uomProduct.uom_id;
-                }
+                //uomProduct = handlers.getListProductUOM(idProduct);
+                uomid = uomProduct.uom_id;
             }
             catch (Exception e)
             {
